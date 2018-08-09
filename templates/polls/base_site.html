@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}投票系统</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}"/>
+    {% block extrastyle %}{% endblock extrastyle %}
+    {% block extrahead %}{% endblock extrahead %}
+</head>
+<body>
+{% block content %}{% endblock content %}
+{% block backToHome %}
+    <a class="btn btn-info" href="{% url 'home' %}">返回首页</a>
+{% endblock backToHome %}
+</body>
+</html>

@@ -1,4 +1,9 @@
+{% extends 'polls/base_site.html' %}
+
+{% block content %}
+    <h3>欢迎使用在线投票系统</h3>
 {% if latest_question_list %}
+    <h4>以下为最新问卷调查问题，请点击你感兴趣的问题进行投票。</h4>
     <ul>
     {% for question in latest_question_list %}
     <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
@@ -7,3 +12,5 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+{% endblock content%}
+{% block backToHome %}{% endblock backToHome %}
