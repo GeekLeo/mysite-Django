@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}-投票系统</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.min.css.map' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}"/>
+    {% block extrastyle %}{% endblock extrastyle %}
+    <script src="{% static 'polls/js/bootstrap.min.js' %}"></script>
+    {% block extrajs %}{% endblock extrajs %}
+    {% block extrahead %}{% endblock extrahead %}
+</head>
+<body>
+{% block content %}{% endblock content %}
+{% block backToHome %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <br>
+            <a class="btn btn-info" href="{% url 'home' %}">返回首页</a>
+        </div>
+    </div>
+{% endblock backToHome %}
+</body>
+</html>

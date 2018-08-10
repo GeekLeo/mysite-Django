@@ -1,0 +1,30 @@
+{% extends 'polls/base_site.html' %}
+{% block title %}详情{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1>{{ question.question_text }}</h1>
+
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+            {% if question.choice_set.all %}
+                <form action="{% url 'polls:vote' question.id %}" method="post">
+                    {% csrf_token %}
+                    {% for choice in question.choice_set.all %}
+                        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"/>
+                        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br/>
+                    {% endfor %}
+                    <input type="submit" value="Vote" class="btn btn-danger"/>
+                </form>
+            {% else %}
+                <p>No choices are available.</p>
+            {% endif %}
+
+            {% if question.id > 1 %}
+                <br>
+                <a class="btn btn-primary" href="{% url 'polls:detail' question.id|add:-1 %}">Next question</a>
+
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
